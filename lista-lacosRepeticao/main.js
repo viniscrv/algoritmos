@@ -120,6 +120,103 @@ function fatorial(){
     console.log(resultado);
 }
 
+/* 12.	do teclado até que o usuário digite 0. Sobre os números lidos, apresente na tela: Construa um algoritmo que leia uma seqüência de números
+a.	O menor valor
+b.	O maior valor
+c.	A soma de todos os valores
+d.	A média dos valores
+e.	A quantidade de números ímpares
+f.	A quantidade de números negativos
+ */
+
+
+let num;
+let sequencia = [];
+do {
+    num = parseInt(prompt('Digite um número para adicionar a sequência:'));
+    if (num != 0){
+        sequencia.push(num);
+        console.log(sequencia);
+    }
+} while (num != 0);
+
+let menorValor = sequencia[0];
+let maiorValor = sequencia[0];
+let soma = 0;
+let numImpar = 0;
+let numNegativo = 0;
+for (let i=0; i<sequencia.length;i++){
+    soma += sequencia[i];
+    if (sequencia[i]%2 != 0){
+        numImpar += 1;
+    }    
+    if (sequencia[i] < 0){
+        numNegativo +=1;
+    }
+    if (sequencia[i] < menorValor){
+        menorValor = sequencia[i];
+    }
+    if (sequencia[i] > maiorValor){
+        maiorValor = sequencia[i];
+    }
+}
+console.log(`Menor valor é ${menorValor}`);
+console.log(`Maior valor é ${maiorValor}`);
+console.log(`Soma de todos os valores é ${soma}`);
+console.log(`Média aritmética entre todos os valores é ${soma/sequencia.length}`);
+console.log(`Foram encontrados ${numImpar} números ímpares`);
+console.log(`Foram encontrados ${numNegativo} números negativos`);
+
+
+/* 13.	Em uma cidade com 1000 eleitores, as opções de voto em uma eleição são:
+•	11: João da Silva
+•	22: José da Silva
+•	33: Juca da Silva
+•	0: voto branco
+•	qualquer outro valor: voto nulo.
+
+Elabore um algoritmo que leia o voto de todos os eleitores e apresente o percentual de votos de cada candidato, o percentual de votos brancos e o percentual de votos nulos. Se um dos candidatos tiver vencido a eleição (mais de 50% dos votos), mostre o seu nome. Caso contrário, mostre a mensagem “Eleição sem candidato vencedor”.
+ */
+
+let joaoSilva = 0;
+let joseSilva = 0;
+let jucaSilva = 0;
+let votoBranco = 0;
+let votoNulo = 0;
+let i = 1;
+let voto;
+do {
+    voto = prompt('Informe o candidato escolhido:');
+    switch(voto){
+        case '11': joaoSilva +=1; break;
+        case '22': joseSilva +=1; break;
+        case '33': jucaSilva +=1; break;
+        case '0': votoBranco +=1; break;
+        default: votoNulo +=1; break;
+    }
+    i++
+}while(i<=1000);
+
+let candidatos = {
+    'João da Silva': `${(joaoSilva/1000)*100}%`,
+    'José da Silva': `${(joseSilva/1000)*100}%`,
+    'Juca da Silva': `${(jucaSilva/1000)*100}%`,
+    'Voto Branco': `${(votoBranco/1000)*100}%`,
+    'Voto nulo': `${(votoNulo/1000)*100}%`
+}
+console.table(candidatos);
+
+if ((joaoSilva/10)*100 > 50){
+    console.log('João da Silva venceu a eleição');
+} else if ((joseSilva/10)*100 > 50){
+    console.log('José da Silva venceu a eleição');
+} else if ((jucaSilva/10)*100 > 50){
+    console.log('Juca da Silva');
+} else {
+    console.log('Eleição sem candidato vencedor');
+}
+
+
 /* 26.	Faça um algoritmo que apresente a seguinte estrutura de menus e sub-menus
 
 1. Inserir          1.1 Inserir aluno           3.1 Excluir Aluno              
@@ -302,29 +399,68 @@ for (let i= -20; i<= inicio+50; i++){
 }
 console.log(`Maior número: ${maiorNum}\nMenor número: ${menorNum}`);
 
-/* 12.	Construa um algoritmo que leia uma seqüência de números do teclado até que o usuário digite 0. Sobre os números lidos, apresente na tela:
-a.	O menor valor
-b.	O maior valor
-c.	A soma de todos os valores
-d.	A média dos valores
-e.	A quantidade de números ímpares
-f.	A quantidade de números negativos
+/* 20.	Elabore um algoritmo que leia uma seqüência de números do teclado até que o usuário digite um número negativo. Sobre os números lidos, apresente:
+•	O percentual de números pares
+•	A média dos números
+•	O percentual de números acima de 50
  */
 
 let num;
-let sequencia = [];
+let numeros = [];
+let numerosPares = 0;
+let numerosAcima50 = 0;
 do {
-    num = parseInt(prompt('Digite um número para adicionar a sequência:'))
-    if (num != 0){
-        sequencia.push(num);
-        console.log(sequencia);
+    num = parseInt(prompt('Digite um número para adicionar a sequência:\nDigite um número negativo para parar'));
+    if (num >= 0){
+        numeros.push(num);
+        if (num%2 == 0){
+            numerosPares += 1;
+        }
+        if (num > 50){
+            numerosAcima50 += 1;
+        }
     }
-}while(num != 0);
+}while (num >= 0);
 
-let menorValor = sequencia[0];
-for (let i=0; i < sequencia.length; i++){
-    if (sequencia[i] < menorValor){
-        menorValor = sequencia[i];
-    }
+let soma = 0;
+for (let i=0; i<numeros.length; i++){
+    soma += numeros[i]; 
 }
-console.log(`Menor valor é ${menorValor}`)
+let porcentagemPares = (numerosPares/numeros.length)*100;
+let porcentagemAcima50 = (numerosAcima50/numeros.length)*100;
+
+console.log(`A porcentagem de números pares é ${porcentagemPares.toFixed(2)}%`);
+console.log(`A média dos números é ${soma/numeros.length}`);
+console.log(`A porcentagem de números acima de 50 é ${porcentagemAcima50.toFixed(2)}%`);
+
+/* 23.	Foi aplicado o provão em uma instituição de ensino com 50 turmas. Faça um algoritmo que leia a quantidade de alunos em cada turma e, para cada aluno, leia a nota de 3 provas. Apresente na tela a média aritmética de cada turma e a porcentagem de alunos que obteve média superior a 7.0. Deve-se ler os dados de uma turma e apresentar o seu resultado na tela. */
+let quantidadeAlunosTotal = 0;
+let quantidadeAlunos;
+let alunoAcimaMedia = 0;
+for (let i=1; i<=50; i++){ 
+    alert(`Turma ${i}`);
+    quantidadeAlunos = parseInt(prompt(`Informe quantos alunos há na turma ${i} :`));
+    console.log(`Turma ${i} tem ${quantidadeAlunos} alunos`);
+    let mediaTurma = [];
+    let somaMediaTurma = 0;
+    for(let j=1; j<=quantidadeAlunos; j++){
+        let nota1 = parseInt(prompt(`Informe nota 1 de aluno ${j} :`));
+        let nota2 = parseInt(prompt(`Informe nota 2 de aluno ${j} :`));
+        let nota3 = parseInt(prompt(`Informe nota 3 de aluno ${j} :`));
+        let media = (nota1+nota2+nota3)/3;
+        mediaTurma.push(media);
+        if (media >= 7){
+            alunoAcimaMedia += 1;
+        }
+    }
+    for (let z=0; z < mediaTurma.length; z++){
+        somaMediaTurma += mediaTurma[z];
+    }
+    quantidadeAlunosTotal += quantidadeAlunos;
+
+    console.log(`Media da turma ${i} é ${(somaMediaTurma/mediaTurma.length).toFixed(2)}`)
+}
+let porcentagemAlunoAcimaMedia = (alunoAcimaMedia/quantidadeAlunosTotal)*100;
+
+console.log(`Existem ${quantidadeAlunosTotal} alunos na instituição`);
+console.log(`${porcentagemAlunoAcimaMedia}% alunos na instituição ficaram acima da média`);
