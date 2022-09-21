@@ -41,7 +41,21 @@ do {
 } while (numero != 0);
 alert(`Soma total = ${soma}`);
 
+/* 6.	Construa um algoritmo que leia 50 números do teclado e apresente na tela o maior e o menor valor lido.
+ */
 
+let inicio = parseInt(prompt('Digite um número inicial:'));
+let menorNum = inicio;
+let maiorNum = 0;
+for (let i= -20; i<= inicio+50; i++){
+    if (i > maiorNum){
+        maiorNum = i;
+    } 
+    if (i < menorNum){
+        menorNum = i;
+    }
+}
+console.log(`Maior número: ${maiorNum}\nMenor número: ${menorNum}`);
 
 /* 7.	Faça um algoritmo que calcule e apresente a média aritmética de diversos números lidos do teclado. Serão digitados valores até que o usuário digite 0. */
 let numeros = [];
@@ -57,7 +71,7 @@ do {
 for (let i=0; i<numeros.length; i++){
     soma += numeros[i];
 }
-alert(`Média aritmética é : ${soma/numeros.length}`)
+alert(`Média aritmética é : ${soma/numeros.length}`);
 
 
 /* 8.	Elabore um algoritmo que apresente os números pares existentes entre 1 e um número lido do teclado bem como a quantidade de números apresentados.  */
@@ -73,12 +87,11 @@ for (let i= 1; i <=numero; i++){
 console.log(`Foram impressos ${quantidade} números.`);
 
 /* 9.    Elabore um algoritmo que apresente na tela a tabuada de um numero lido do teclado*/
-function tabuada(){
-    let numero = parseInt(prompt('Digite um número:'));
 
-    for (let i=0; i<=10; i++){
-        console.log(`${numero} x ${i} = ${numero*i}`)
-    }
+let numero = parseInt(prompt('Digite um número:'));
+
+for (let i=0; i<=10; i++){
+    console.log(`${numero} x ${i} = ${numero*i}`)
 }
 
 
@@ -95,22 +108,20 @@ alert(resultado);
 /* 11.	Faça um algoritmo que calcule o fatorial de um número positivo qualquer. 
 Ex.: 5! = 5 * 4 * 3 * 2 * 1 = 120  e  0! = 1
  */
-function fatorial(){
-    let numero = parseInt(prompt('Digite um numero:'));
-    let resultado = numero;
+let numero = parseInt(prompt('Digite um numero:'));
+let resultado = numero;
 
-    if (numero > 0){
-        for (let i=numero-1; i >=1; i--){
-            resultado *= i;
-        }
-    } else if (numero === 0){
-        resultado = 1;
-    } else {
-        alert('Números negativos não são válidos.')
+if (numero > 0){
+    for (let i=numero-1; i >=1; i--){
+        resultado *= i;
     }
-
-    console.log(resultado);
+} else if (numero === 0){
+    resultado = 1;
+} else {
+    alert('Números negativos não são válidos.')
 }
+
+console.log(resultado);
 
 /* 12.	do teclado até que o usuário digite 0. Sobre os números lidos, apresente na tela: Construa um algoritmo que leia uma seqüência de números
 a.	O menor valor
@@ -208,146 +219,6 @@ if ((joaoSilva/10)*100 > 50){
     console.log('Eleição sem candidato vencedor');
 }
 
-
-/* 26.	Faça um algoritmo que apresente a seguinte estrutura de menus e sub-menus
-
-1. Inserir          1.1 Inserir aluno           3.1 Excluir Aluno              
-2. Consultar        1.2 Inserir professor       3.2 Excluir professor
-3. Excluir          1.3 Inserir funcionário     3.3 Excluir funcionário
-4. Listar           1.4 Retornar                3.4 Retornar
-5. Sair
-
-*/
-let escolha;
-do {
-    escolha = prompt('Escolha uma opção:\n1 - Inserir\n2 - Consultar\n3 - Excluir\n4 - Listar\n5 - Sair');
-    switch(escolha){
-        case '1':
-            let inserir;
-            do {
-            inserir = prompt('Quem você deseja inserir:\n1.1 - Inserir aluno\n1.2 - Inserir professor\n1.3 - Inserir funcionário\n1.4 - Retornar');
-            switch(inserir){
-                case '1.1': alert('Inserir aluno'); break;
-                case '1.2': alert('Inserir professor'); break;
-                case '1.3': alert('Inserir funcionário'); break;
-                case '1.4': alert('Retornar'); break;
-                default: alert('Opção inválida');
-            }
-            }while (inserir != '1.4')
-            break;
-        case '2': alert('Consultar'); break;
-        case '3':
-            let excluir;
-            do {
-                excluir = prompt('Quem você deseja excluir:\n3.1 - Excluir aluno\n3.2 - Excluir professor\n3.3 - Excluir funcionário\n3.4 - Retornar')
-                switch (excluir){
-                    case '3.1': alert('Excluir aluno'); break;
-                    case '3.2': alert('Excluir professor'); break;
-                    case '3.3': alert('Excluir funcionário'); break;
-                    case '3.4': alert('Retornar'); break;
-                    default: alert('Opção inválida');
-                }
-            }while (excluir != 3.4)
-            break;
-        case '4': alert('Listar'); break;
-        case '5': alert('Sair'); break;
-        default: alert('Opção inválida');
-    }
-} while(escolha != 5);
-
-/* 21.	Elabore um algoritmo que apresente o seguinte menu:
-1.	Inserir
-2.	Excluir
-3.	Consultar
-4.	Listar 
-5.	Sair
-Se as opções 1, 2, 3 ou 4 forem escolhidas, mostrar na tela o nome da opção (Inserir, Excluir, Consultar, Listar). Se a opção 5 for escolhida, encerrar a execução do algoritmo.
- */
-
-let escolha;
-do {
-    escolha = prompt('Escolha uma opção:\n1 - Inserir\n2 - Excluir\n3 - Consultar\n4 - Listar\n5 - Sair');
-    switch(escolha){
-        case '1': alert('Inserir'); break;
-        case '2': alert('Excluir'); break;
-        case '3': alert('Consultar'); break;
-        case '4': alert('Listar'); break;
-        case '5': alert('Sair'); break;
-        default: alert('Opção inválida');
-    }
-} while(escolha != 5);
-
-/* 22.	Faça um algoritmo que apresente na tela o seguinte menu:
-1.	Digitar um número ímpar
-2.	Digitar um número par
-3.	Sair
-
-Caso o usuário escolha a opção 1, ele deve digitar um número ímpar para voltar ao menu. O mesmo deve ser feito na opção 2, mas para um número par. Caso escolha a opção 3, o algoritmo deve apresentar a quantidade de números ímpares digitados na opção 1, a quantidade de números pares digitados na opção 2 e encerrar o algoritmo.
- */
-
-let escolha;
-let numImpar = [];
-let numPar = [];
-do {
-    escolha = prompt('Digite uma opção:\n1 - Digitar um número ímpar\n2 - Digitar um número par\n3 - Sair');
-    let num;
-    switch(escolha){
-        case '1': 
-            num = prompt('Digite um número ímpar:');
-            if (num%2 != 0){
-                numImpar.push(num);
-            } else {
-                alert(`${num} não é um número ímpar`);
-            }
-        break;
-        case '2':
-            num = prompt('Digite um número par:');
-            if (num%2 == 0){
-                numPar.push(num);
-            } else {
-                alert(`${num} não é um número par`);
-            }
-        break;
-        case '3':
-            alert(`No total foram inseridos ${numImpar.length} números ímpares, e ${numPar.length} números pares.`);
-        break;
-        default: alert('Opção inválida');
-    }
-} while (escolha != 3);
-
-
-/* 24.	Elabore um algoritmo que imprima a tabuada do 1 até a tabuada do 10. */
-
-for (let i=1; i<=10; i++){
-    console.log(`Tabuada [${i}]`)
-    for(let j=1; j<=10; j++){
-        console.log(`${i} x ${j} = ${i*j}`)
-    }
-}
-
-
-/* 28.	Faça um algoritmo que leia vários números do teclado e apresente o seu fatorial na tela. O processo deve ser encerrado quando for digitado um número negativo.
-Ex.: 5! = 5 * 4 * 3 * 2 * 1 = 120, 0! = 1
- */
-
-let numero;
-do {
-    numero = parseInt(prompt('Digite um numero:\n(Digite um número negativo para parar)'));
-    let resultado = numero;
-
-    if (numero > 0){
-        for (let i=numero-1; i >=1; i--){
-            resultado *= i;
-        }
-        alert(resultado);
-    } else if (numero === 0){
-        resultado = 1;
-        alert(resultado);
-    } else {
-        alert('Parar');
-    }
-} while (numero >= 0);
-
 /* 14.	Elabore um algoritmo que calcule a área total de uma residência (considerando cômodos como cozinha, sala, quarto,...). O algoritmo deve solicitar o nome do cômodo, a largura e o comprimento em metros então apresentar a área do cômodo lido. Na seqüência, o algoritmo deve apresentar uma mensagem solicitando a confirmação para continuar calculando a área de outros cômodos. Se a resposta for “SIM”, deve-se repetir o passo anterior. Se a resposta for “NÃO”, o algoritmo deve apresentar a área total acumulada de todos os cômodos informados. */
 
 
@@ -372,90 +243,6 @@ do {
         alert(`Você finalizou o cálculo.\nA área total da residência é de ${area} metros.`);
     }
 } while (adicionar != 'NÃO');
-
-
-
-/* 6.	Construa um algoritmo que leia 50 números do teclado e apresente na tela o maior e o menor valor lido.
- */
-
-let inicio = parseInt(prompt('Digite um número inicial:'));
-let menorNum = inicio;
-let maiorNum = 0;
-for (let i= -20; i<= inicio+50; i++){
-    if (i > maiorNum){
-        maiorNum = i;
-    } 
-    if (i < menorNum){
-        menorNum = i;
-    }
-}
-console.log(`Maior número: ${maiorNum}\nMenor número: ${menorNum}`);
-
-/* 20.	Elabore um algoritmo que leia uma seqüência de números do teclado até que o usuário digite um número negativo. Sobre os números lidos, apresente:
-•	O percentual de números pares
-•	A média dos números
-•	O percentual de números acima de 50
- */
-
-let num;
-let numeros = [];
-let numerosPares = 0;
-let numerosAcima50 = 0;
-do {
-    num = parseInt(prompt('Digite um número para adicionar a sequência:\nDigite um número negativo para parar'));
-    if (num >= 0){
-        numeros.push(num);
-        if (num%2 == 0){
-            numerosPares += 1;
-        }
-        if (num > 50){
-            numerosAcima50 += 1;
-        }
-    }
-}while (num >= 0);
-
-let soma = 0;
-for (let i=0; i<numeros.length; i++){
-    soma += numeros[i]; 
-}
-let porcentagemPares = (numerosPares/numeros.length)*100;
-let porcentagemAcima50 = (numerosAcima50/numeros.length)*100;
-
-console.log(`A porcentagem de números pares é ${porcentagemPares.toFixed(2)}%`);
-console.log(`A média dos números é ${soma/numeros.length}`);
-console.log(`A porcentagem de números acima de 50 é ${porcentagemAcima50.toFixed(2)}%`);
-
-/* 23.	Foi aplicado o provão em uma instituição de ensino com 50 turmas. Faça um algoritmo que leia a quantidade de alunos em cada turma e, para cada aluno, leia a nota de 3 provas. Apresente na tela a média aritmética de cada turma e a porcentagem de alunos que obteve média superior a 7.0. Deve-se ler os dados de uma turma e apresentar o seu resultado na tela. */
-let quantidadeAlunosTotal = 0;
-let quantidadeAlunos;
-let alunoAcimaMedia = 0;
-for (let i=1; i<=50; i++){ 
-    alert(`Turma ${i}`);
-    quantidadeAlunos = parseInt(prompt(`Informe quantos alunos há na turma ${i} :`));
-    console.log(`Turma ${i} tem ${quantidadeAlunos} alunos`);
-    let mediaTurma = [];
-    let somaMediaTurma = 0;
-    for(let j=1; j<=quantidadeAlunos; j++){
-        let nota1 = parseInt(prompt(`Informe nota 1 de aluno ${j} :`));
-        let nota2 = parseInt(prompt(`Informe nota 2 de aluno ${j} :`));
-        let nota3 = parseInt(prompt(`Informe nota 3 de aluno ${j} :`));
-        let media = (nota1+nota2+nota3)/3;
-        mediaTurma.push(media);
-        if (media >= 7){
-            alunoAcimaMedia += 1;
-        }
-    }
-    for (let z=0; z < mediaTurma.length; z++){
-        somaMediaTurma += mediaTurma[z];
-    }
-    quantidadeAlunosTotal += quantidadeAlunos;
-
-    console.log(`Media da turma ${i} é ${(somaMediaTurma/mediaTurma.length).toFixed(2)}`)
-}
-let porcentagemAlunoAcimaMedia = (alunoAcimaMedia/quantidadeAlunosTotal)*100;
-
-console.log(`Existem ${quantidadeAlunosTotal} alunos na instituição`);
-console.log(`${porcentagemAlunoAcimaMedia}% alunos na instituição ficaram acima da média`);
 
 /* 15.	Será realizada uma pesquisa na UP com o objetivo de obter o perfil dos alunos dos cursos de tecnologia. Os 200 alunos entrevistados deverão informar:
 •	sexo (F: feminino, M: masculino);
@@ -555,3 +342,211 @@ let porcentMasVerdesPretos = (masVerdesPretos/quantidadePessoas)*100;
 console.log(`A média da idade dos entrevistados é ${mediaIdades}`);
 console.log(`A porcentagem de mulheres entre 18 e 35 anos, com olhos verdes e cabelo louros é ${porcentFemVerdesLouros}%`);
 console.log(`A porcentagem de homens com olhos verdes e cabelos pretos é ${porcentMasVerdesPretos}%`);
+
+
+/* 20.	Elabore um algoritmo que leia uma seqüência de números do teclado até que o usuário digite um número negativo. Sobre os números lidos, apresente:
+•	O percentual de números pares
+•	A média dos números
+•	O percentual de números acima de 50
+ */
+
+let num;
+let numeros = [];
+let numerosPares = 0;
+let numerosAcima50 = 0;
+do {
+    num = parseInt(prompt('Digite um número para adicionar a sequência:\nDigite um número negativo para parar'));
+    if (num >= 0){
+        numeros.push(num);
+        if (num%2 == 0){
+            numerosPares += 1;
+        }
+        if (num > 50){
+            numerosAcima50 += 1;
+        }
+    }
+}while (num >= 0);
+
+let soma = 0;
+for (let i=0; i<numeros.length; i++){
+    soma += numeros[i]; 
+}
+let porcentagemPares = (numerosPares/numeros.length)*100;
+let porcentagemAcima50 = (numerosAcima50/numeros.length)*100;
+
+console.log(`A porcentagem de números pares é ${porcentagemPares.toFixed(2)}%`);
+console.log(`A média dos números é ${soma/numeros.length}`);
+console.log(`A porcentagem de números acima de 50 é ${porcentagemAcima50.toFixed(2)}%`);
+
+
+/* 21.	Elabore um algoritmo que apresente o seguinte menu:
+1.	Inserir
+2.	Excluir
+3.	Consultar
+4.	Listar 
+5.	Sair
+Se as opções 1, 2, 3 ou 4 forem escolhidas, mostrar na tela o nome da opção (Inserir, Excluir, Consultar, Listar). Se a opção 5 for escolhida, encerrar a execução do algoritmo.
+ */
+
+let escolha;
+do {
+    escolha = prompt('Escolha uma opção:\n1 - Inserir\n2 - Excluir\n3 - Consultar\n4 - Listar\n5 - Sair');
+    switch(escolha){
+        case '1': alert('Inserir'); break;
+        case '2': alert('Excluir'); break;
+        case '3': alert('Consultar'); break;
+        case '4': alert('Listar'); break;
+        case '5': alert('Sair'); break;
+        default: alert('Opção inválida');
+    }
+} while(escolha != 5);
+
+/* 22.	Faça um algoritmo que apresente na tela o seguinte menu:
+1.	Digitar um número ímpar
+2.	Digitar um número par
+3.	Sair
+
+Caso o usuário escolha a opção 1, ele deve digitar um número ímpar para voltar ao menu. O mesmo deve ser feito na opção 2, mas para um número par. Caso escolha a opção 3, o algoritmo deve apresentar a quantidade de números ímpares digitados na opção 1, a quantidade de números pares digitados na opção 2 e encerrar o algoritmo.
+ */
+
+let escolha;
+let numImpar = [];
+let numPar = [];
+do {
+    escolha = prompt('Digite uma opção:\n1 - Digitar um número ímpar\n2 - Digitar um número par\n3 - Sair');
+    let num;
+    switch(escolha){
+        case '1': 
+            num = prompt('Digite um número ímpar:');
+            if (num%2 != 0){
+                numImpar.push(num);
+            } else {
+                alert(`${num} não é um número ímpar`);
+            }
+        break;
+        case '2':
+            num = prompt('Digite um número par:');
+            if (num%2 == 0){
+                numPar.push(num);
+            } else {
+                alert(`${num} não é um número par`);
+            }
+        break;
+        case '3':
+            alert(`No total foram inseridos ${numImpar.length} números ímpares, e ${numPar.length} números pares.`);
+        break;
+        default: alert('Opção inválida');
+    }
+} while (escolha != 3);
+
+
+/* 23.	Foi aplicado o provão em uma instituição de ensino com 50 turmas. Faça um algoritmo que leia a quantidade de alunos em cada turma e, para cada aluno, leia a nota de 3 provas. Apresente na tela a média aritmética de cada turma e a porcentagem de alunos que obteve média superior a 7.0. Deve-se ler os dados de uma turma e apresentar o seu resultado na tela. */
+let quantidadeAlunosTotal = 0;
+let quantidadeAlunos;
+let alunoAcimaMedia = 0;
+for (let i=1; i<=50; i++){ 
+    alert(`Turma ${i}`);
+    quantidadeAlunos = parseInt(prompt(`Informe quantos alunos há na turma ${i} :`));
+    console.log(`Turma ${i} tem ${quantidadeAlunos} alunos`);
+    let mediaTurma = [];
+    let somaMediaTurma = 0;
+    for(let j=1; j<=quantidadeAlunos; j++){
+        let nota1 = parseInt(prompt(`Informe nota 1 de aluno ${j} :`));
+        let nota2 = parseInt(prompt(`Informe nota 2 de aluno ${j} :`));
+        let nota3 = parseInt(prompt(`Informe nota 3 de aluno ${j} :`));
+        let media = (nota1+nota2+nota3)/3;
+        mediaTurma.push(media);
+        if (media >= 7){
+            alunoAcimaMedia += 1;
+        }
+    }
+    for (let z=0; z < mediaTurma.length; z++){
+        somaMediaTurma += mediaTurma[z];
+    }
+    quantidadeAlunosTotal += quantidadeAlunos;
+
+    console.log(`Media da turma ${i} é ${(somaMediaTurma/mediaTurma.length).toFixed(2)}`)
+}
+let porcentagemAlunoAcimaMedia = (alunoAcimaMedia/quantidadeAlunosTotal)*100;
+
+console.log(`Existem ${quantidadeAlunosTotal} alunos na instituição`);
+console.log(`${porcentagemAlunoAcimaMedia}% alunos na instituição ficaram acima da média`);
+
+
+/* 24.	Elabore um algoritmo que imprima a tabuada do 1 até a tabuada do 10. */
+
+for (let i=1; i<=10; i++){
+    console.log(`Tabuada [${i}]`);
+    for(let j=1; j<=10; j++){
+        console.log(`${i} x ${j} = ${i*j}`);
+    }
+}
+
+
+/* 26.	Faça um algoritmo que apresente a seguinte estrutura de menus e sub-menus
+
+1. Inserir          1.1 Inserir aluno           3.1 Excluir Aluno              
+2. Consultar        1.2 Inserir professor       3.2 Excluir professor
+3. Excluir          1.3 Inserir funcionário     3.3 Excluir funcionário
+4. Listar           1.4 Retornar                3.4 Retornar
+5. Sair
+
+*/
+let escolha;
+do {
+    escolha = prompt('Escolha uma opção:\n1 - Inserir\n2 - Consultar\n3 - Excluir\n4 - Listar\n5 - Sair');
+    switch(escolha){
+        case '1':
+            let inserir;
+            do {
+            inserir = prompt('Quem você deseja inserir:\n1.1 - Inserir aluno\n1.2 - Inserir professor\n1.3 - Inserir funcionário\n1.4 - Retornar');
+            switch(inserir){
+                case '1.1': alert('Inserir aluno'); break;
+                case '1.2': alert('Inserir professor'); break;
+                case '1.3': alert('Inserir funcionário'); break;
+                case '1.4': alert('Retornar'); break;
+                default: alert('Opção inválida');
+            }
+            }while (inserir != '1.4')
+            break;
+        case '2': alert('Consultar'); break;
+        case '3':
+            let excluir;
+            do {
+                excluir = prompt('Quem você deseja excluir:\n3.1 - Excluir aluno\n3.2 - Excluir professor\n3.3 - Excluir funcionário\n3.4 - Retornar')
+                switch (excluir){
+                    case '3.1': alert('Excluir aluno'); break;
+                    case '3.2': alert('Excluir professor'); break;
+                    case '3.3': alert('Excluir funcionário'); break;
+                    case '3.4': alert('Retornar'); break;
+                    default: alert('Opção inválida');
+                }
+            }while (excluir != 3.4)
+            break;
+        case '4': alert('Listar'); break;
+        case '5': alert('Sair'); break;
+        default: alert('Opção inválida');
+    }
+} while(escolha != 5);
+
+/* 28.	Faça um algoritmo que leia vários números do teclado e apresente o seu fatorial na tela. O processo deve ser encerrado quando for digitado um número negativo.
+Ex.: 5! = 5 * 4 * 3 * 2 * 1 = 120, 0! = 1
+ */
+
+let numero;
+do {
+    numero = parseInt(prompt('Digite um numero:\n(Digite um número negativo para parar)'));
+    let resultado = numero;
+
+    if (numero > 0){
+        for (let i=numero-1; i >=1; i--){
+            resultado *= i;
+        }
+        alert(resultado);
+    } else if (numero === 0){
+        resultado = 1;
+        alert(resultado);
+    } else {
+        alert('Parar');
+    }
+} while (numero >= 0);
