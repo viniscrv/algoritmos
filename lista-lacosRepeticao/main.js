@@ -1,41 +1,33 @@
 
 /* 1.	Escreva um algoritmo que mostre na tela o quadrado dos números de 15 a 200. */
-function expoente2(){
-    for (let i = 15; i <=200; i++){
-        console.log(i**2);
-    }
+for (let i = 15; i <=200; i++){
+    console.log(i**2);
 }
 
 /* 2.	Faça um algoritmo que apresenta na tela a soma obtida dos 100 primeiros números inteiros. Ex.: 1 + 2 + 3 + 4 + 5 + ... + 97 + 98 + 99 + 100
 */
-function somaSequencial(){
-    let soma = 0;
-    for (let i = 1; i <= 100; i++){
-        soma += i;
-    }
-    console.log(soma);
+let soma = 0;
+for (let i = 1; i <= 100; i++){
+    soma += i;
 }
+console.log(soma);
 
 /* 3.	Elabore um algoritmo que apresente o somatório dos valores pares existentes entre 1 e 500. */
 
-function somaSequencialPares2(){
-    let soma = 0;
-    for (let i = 0; i <=500; i++){
-        if (i%2===0){
-            soma += i;
-        }
-    }  
-    console.log(soma);
-}
+let soma = 0;
+for (let i = 0; i <=500; i++){
+    if (i%2===0){
+        soma += i;
+    }
+}  
+console.log(soma);
 
 /* 4.	Faça um algoritmo que apresente todos os números ímpares entre 1 e um número lido do teclado. */
   
-function impares(){
-    let numero = parseInt(prompt('Digite um número:'));
-    for (let i=0; i <= numero; i++){
-        if (i%2 === 1){
-            console.log(i);
-        }
+let numero = parseInt(prompt('Digite um número:'));
+for (let i=0; i <= numero; i++){
+    if (i%2 === 1){
+        console.log(i);
     }
 }
 
@@ -464,3 +456,102 @@ let porcentagemAlunoAcimaMedia = (alunoAcimaMedia/quantidadeAlunosTotal)*100;
 
 console.log(`Existem ${quantidadeAlunosTotal} alunos na instituição`);
 console.log(`${porcentagemAlunoAcimaMedia}% alunos na instituição ficaram acima da média`);
+
+/* 15.	Será realizada uma pesquisa na UP com o objetivo de obter o perfil dos alunos dos cursos de tecnologia. Os 200 alunos entrevistados deverão informar:
+•	sexo (F: feminino, M: masculino);
+•	idade;
+•	estado civil (S: solteiro, C: casado, V: viúvo e D: desquitado).
+Com base nesta pesquisa, elabore um algoritmo que apresente:
+•	quantas pessoas do sexo feminino são casadas;
+•	quantas pessoas do sexo masculino com idade entre 17 e 25 anos são solteiros;
+•	quantas pessoas de ambos os sexos com idade acima de 30 anos são solteiras.
+ */
+
+let aluno = [
+    {
+        sexo: null,
+        idade: null,
+        estadoCivil: null
+    },
+]
+let femCasada = 0;
+let mas17e25 = 0;
+let acima30 = 0;
+let i = 1;
+do {
+    let novoAluno = {};
+    novoAluno.sexo = prompt(`[ALUNO ${i}]\n\nInforme o sexo:\n\nF: feminino, M: masculino`);
+    novoAluno.idade = parseInt(prompt(`[ALUNO ${i}]\n\nInforme a idade:`));
+    novoAluno.estadoCivil = prompt(`[ALUNO ${i}]\n\nInforme o estado civil:\n\nS: solteiro, C: casado, V: viúvo e D: desquitado`);
+
+    if (novoAluno.sexo == 'F' && novoAluno.estadoCivil == 'C'){
+        femCasada += 1;
+    }
+    if (novoAluno.sexo == 'M' && novoAluno.idade >= 17 && novoAluno.idade <= 25){
+        mas17e25 += 1;
+    }
+    if(novoAluno.idade > 30  && novoAluno.estadoCivil == 'S'){
+        acima30 += 1;
+    }
+    aluno.push(novoAluno);
+    i++
+}while(i<=200);
+
+console.log(`são ${femCasada} pessoas do sexo feminino e casadas`);
+console.log(`são ${mas17e25} pessoas do sexo masculino e estão entre 17 e 25 anos`);
+console.log(`são ${acima30} pessoas com idade acima de 30 anos e solteiras`);
+
+/* 16.	Uma pesquisa sobre características físicas da população de Curitiba considerou os seguintes dados referentes a cada entrevistado:
+•	sexo (feminino, masculino)
+•	cor dos olhos (azuis, verdes, castanhos)
+•	cor dos cabelos (louros, castanhos, pretos)
+•	idade em anos
+Considerando que os dados foram lidos até que foi informada a idade igual a -1, faça um algoritmo que determine e apresente:
+•	a média de idade dos entrevistados
+•	a porcentagem de indivíduos do sexo feminino cuja idade está entre 18 e 35 anos (inclusive) e que tenham olhos verdes e cabelos louros.
+•	a porcentagem de indivíduos do sexo masculino cujos olhos são verdes e os cabelos são pretos.
+ */
+
+let pessoas = [
+    {
+        idade : null,
+    },
+]
+let femVerdesLouros = 0;
+let masVerdesPretos = 0;
+let i = 0;
+do {
+    let novaPessoa = {};
+    novaPessoa.sexo = prompt('Informe o sexo:\n\nF - feminino, M - masculino');
+    novaPessoa.corOlhos = prompt('Informe a cor de seus olhos:\n\nazuis, verdes ou castanhos');
+    novaPessoa.corCabelo = prompt('Informe a cor de seu cabelo:\n\nlouros, castanhos ou pretos');
+    novaPessoa.idade = parseInt(prompt('Informe sua idade:'));
+    if (novaPessoa.sexo == 'F' && novaPessoa.idade > 18 && novaPessoa.idade < 35){
+        if (novaPessoa.corOlhos == 'verdes' && novaPessoa.corCabelo == 'louros'){
+            femVerdesLouros += 1;
+        }
+    }
+    if (novaPessoa.sexo == 'M' && novaPessoa.corOlhos == 'verdes' && novaPessoa.corCabelo == 'pretos'){
+        masVerdesPretos += 1;
+    }
+    pessoas.push(novaPessoa);
+    i++
+} while (pessoas[i].idade != -1);
+pessoas.pop();
+
+let idades = [];
+for (j=1; j<pessoas.length;j++){
+    idades.push(pessoas[j].idade);
+}
+let soma = 0;
+for (k=0; k<idades.length;k++){
+    soma += idades[k];
+}
+let mediaIdades = soma/idades.length;
+let quantidadePessoas = pessoas.length-1;
+let porcentFemVerdesLouros = (femVerdesLouros/quantidadePessoas)*100;
+let porcentMasVerdesPretos = (masVerdesPretos/quantidadePessoas)*100;
+
+console.log(`A média da idade dos entrevistados é ${mediaIdades}`);
+console.log(`A porcentagem de mulheres entre 18 e 35 anos, com olhos verdes e cabelo louros é ${porcentFemVerdesLouros}%`);
+console.log(`A porcentagem de homens com olhos verdes e cabelos pretos é ${porcentMasVerdesPretos}%`);
