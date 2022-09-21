@@ -343,6 +343,64 @@ console.log(`A média da idade dos entrevistados é ${mediaIdades}`);
 console.log(`A porcentagem de mulheres entre 18 e 35 anos, com olhos verdes e cabelo louros é ${porcentFemVerdesLouros}%`);
 console.log(`A porcentagem de homens com olhos verdes e cabelos pretos é ${porcentMasVerdesPretos}%`);
 
+/* 17.  Fazer um algoritmo que calcule e escreva o valor de S, de acordo com a seguinte 
+fórmula */
+
+let numerador = [];
+let denominador = [];
+let s = 0; 
+for (i=1; i<=99; i=i+2){
+    numerador.push(i);
+}
+for (j=1; j<=50; j++){
+    denominador.push(j);
+}
+for (k=0; k<50; k++){
+    s += numerador[k]/denominador[k];
+}
+console.log(s);
+
+/* 18.  Crie um algoritmo que calcule e escreva a soma dos 50 primeiros termos da série: */
+
+let numerador = [];
+let denominador = [];
+let soma = 0;
+for(i=1000;i>=853;i=i-3){
+    numerador.push(i);
+}
+for (j=1; j<=50; j++){
+    denominador.push(j);
+}
+for (k=0; k<50; k++){
+    if (denominador[k]%2 == 0){
+        soma -= numerador[k]/denominador[k];
+
+    } else {
+        soma += numerador[k]/denominador[k];
+    }
+}
+console.log(soma);
+
+
+/* 19.  Crie um algoritmo que leia o valor de x e calcule e escreva o valor do seguinte 
+somatório: 
+ */
+
+let x = parseInt(prompt('Digite o valor para x:'));
+let expoente = [];
+let denominador = [];
+let s = 0;
+for (i=25;i>0;i--){
+    expoente.push(i);
+}
+for (j=1; j<=25; j++){
+    denominador.push(j);
+}
+for (k=0;k<25;k++){
+    s += x**expoente[k]/denominador[k];
+}
+console.log(s);
+
 
 /* 20.	Elabore um algoritmo que leia uma seqüência de números do teclado até que o usuário digite um número negativo. Sobre os números lidos, apresente:
 •	O percentual de números pares
@@ -483,6 +541,42 @@ for (let i=1; i<=10; i++){
 }
 
 
+/* 25.  Elabore um algoritmo que leia a quantidade de turmas em uma escola e, para cada 
+turma, leia a quantidade de alunos. Para cada aluno, leia o valor de 3 notas e calcule 
+sua média aritmética. Apresente na tela a média aritmética do aluno, a média da 
+turma, a porcentagem de alunos em cada turma que obteve média maior ou igual a 7 e 
+a porcentagem de turmas que obteve média maior ou igual a 7. 
+ */
+
+let quantidadeTurmas = parseInt(prompt('Informe a quantidade de turmas na escola:'));
+let turmaAcimaMedia = 0;
+for (i=1; i<=quantidadeTurmas; i++){
+    let quantidadeAlunos = parseInt(prompt(`Informe a quantide de alunos da turma [${i}]:`));
+    let somaMedias = 0;
+    let alunoAcimaMedia = 0;
+    for (j=1; j<=quantidadeAlunos;j++){
+        let nota1 = parseInt(prompt('Informe a nota 1:'));
+        let nota2 = parseInt(prompt('Informe a nota 2:'));
+        let nota3 = parseInt(prompt('Informe a nota 3:'));
+        let mediaAluno = (nota1+nota2+nota3)/3;
+        somaMedias += mediaAluno;
+        console.log(`Média do aluno [${j}] é ${mediaAluno}`);
+        if (mediaAluno >= 7){
+            alunoAcimaMedia += 1;
+        }
+    }
+    let mediaTurma = somaMedias/quantidadeAlunos;
+    if (mediaTurma >= 7){
+        turmaAcimaMedia += 1;
+    }
+    console.log(`A média da turma [${i}] é ${mediaTurma}`);
+    let porcentAlunoAcimaMedia = (alunoAcimaMedia/quantidadeAlunos)*100;
+    console.log(`A porcentagem de alunos da turma [${i}] que ficou acima da média é ${porcentAlunoAcimaMedia}%`);
+}
+let porcentTurmaAcimaMedia = (turmaAcimaMedia/quantidadeTurmas)*100;
+console.log(`A porcentagem de turmas da escola que ficou acima da média é ${porcentTurmaAcimaMedia}%`);
+
+
 /* 26.	Faça um algoritmo que apresente a seguinte estrutura de menus e sub-menus
 
 1. Inserir          1.1 Inserir aluno           3.1 Excluir Aluno              
@@ -528,6 +622,14 @@ do {
         default: alert('Opção inválida');
     }
 } while(escolha != 5);
+
+
+/* 27.  Construa um algoritmo que apresente a seguinte seqüência de números: 1 2 2 3 3 3 4 4 4 4 5 5 5 5 5 */
+
+
+
+
+
 
 /* 28.	Faça um algoritmo que leia vários números do teclado e apresente o seu fatorial na tela. O processo deve ser encerrado quando for digitado um número negativo.
 Ex.: 5! = 5 * 4 * 3 * 2 * 1 = 120, 0! = 1
