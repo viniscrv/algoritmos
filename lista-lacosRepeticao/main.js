@@ -211,7 +211,7 @@ if ((joaoSilva/10)*100 > 50){
 } else if ((joseSilva/10)*100 > 50){
     console.log('José da Silva venceu a eleição');
 } else if ((jucaSilva/10)*100 > 50){
-    console.log('Juca da Silva');
+    console.log('Juca da Silva venceu a eleição');
 } else {
     console.log('Eleição sem candidato vencedor');
 }
