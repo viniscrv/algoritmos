@@ -46,8 +46,8 @@ alert(`Soma total = ${soma}`);
 
 let inicio = parseInt(prompt('Digite um número inicial:'));
 let menorNum = inicio;
-let maiorNum = 0;
-for (let i= -20; i<= inicio+50; i++){
+let maiorNum = inicio;
+for (let i= inicio; i<= inicio+50; i++){
     if (i > maiorNum){
         maiorNum = i;
     } 
