@@ -626,9 +626,11 @@ do {
 
 /* 27.  Construa um algoritmo que apresente a seguinte seqüência de números: 1 2 2 3 3 3 4 4 4 4 5 5 5 5 5 */
 
-
-
-
+for (i=1; i<=5; i++){
+    for (j=0; j != i; j++){
+        console.log(i);
+    }
+}
 
 
 /* 28.	Faça um algoritmo que leia vários números do teclado e apresente o seu fatorial na tela. O processo deve ser encerrado quando for digitado um número negativo.
