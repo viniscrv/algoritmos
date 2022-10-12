@@ -31,7 +31,7 @@ console.log(numeroPerfeito(num));
 
 /* 2.	Elabore uma função que efetue a exponenciação de um número x por um expoente y (sem usar a função de exponenciação).*/
 
-let exponenciacao = (x, y) => x**y;
+const exponenciacao = (x, y) => x**y;
 
 /* 3 */
 
@@ -75,50 +75,145 @@ function colisao(x2, x1, y2, y1, z2, z1){
 }
 
 
-/* 5 [INCOMPLETO]*/
+/* 5.	Desenvolva apenas UM algoritmo que, dependendo da opção que o usuário escolher, execute um dos exercícios abaixo. O programa só deve terminar quando o usuário escolher para sair. Abaixo o exemplo do menu:
+1 – Exercício 1
+2 – Exercício 2
+3 – Exercício 3
+4 – Exercício 4
+5 – Sair
 
-let exercicio = 1; // prompt
+Exercício 1: Crie um procedimento que solicite 3 valores do usuário e chame uma função que necessite de três argumentos, e que retorne a soma do quadrado desses três parâmetros. Imprima esse resultado na tela.
 
-function exercicios(){
+Exercício 2: Crie um procedimento que peça 2 informações ao usuário: linhas e colunas. Ele deve chamar uma função que desenhe um retângulo na tela usando os caracteres ‘+’ , ‘−’ e ‘| ‘. Esta função deve receber dois parâmetros: linhas e colunas.
+Ex.: linhas= 4; colunas = 8
+        +------+
+        |      |
+        |      |
+        +------+
+Obs: para pular linha: ESCREVA(“\n”);
 
-    switch(exercicio){
-        case 1:
-                let valor1 = Number(prompt('Informe o *primeiro* valor:'));
-                let valor2 = Number(prompt('Informe o *segundo* valor:'));
-                let valor3 = Number(prompt('Informe o *terceiro* valor:'));
-            const valores = (valor1,valor2,valor3) => {
-                let somaValores = Math.pow(valor1,2);
-                somaValores += Math.pow(valor2,2);
-                somaValores += Math.pow(valor3,2);
-                return somaValores;
-            }
-            console.log(valores(valor1,valor2,valor3));
-            break;
-        case 2:
 
-            let linhas = Number(prompt('Informe quantas linha terá o retângulo:'));
-            let colunas = Number(prompt('Informe quantas colunas terá o retângulo:'));
+Exercício 3: Crie um procedimento que pergunte um número ao usuário e chame uma função que informe a quantidade de dígitos de um determinado número inteiro informado. Imprima quantos dígitos tem esse número.
 
-            const desenharRetangulo = (linhas,colunas) => {
-                let desenho = ''
-                for (c=0; c<colunas; c++){
-                    if (c === 0 /* || c === colunas - 1 */){
-                        desenho += '+'
-                    } else if(c === colunas - 1){
-                        desenho += '+\n'
-                        
-                    }else {
-                        desenho += '-'
+Exercício 4: Crie procedimento(s) e/ou função(ões), a sua escolha, que solicite um número do usuário (n) e imprima:
+	
+	1
+	1	2
+	1	2	3
+	..	..	..
+	1	2	3	..	n
+
+Por exemplo:
+n = 6
+Imprimir:
+1
+1 2
+1 2 3
+1 2 3 4
+1 2 3 4 5 
+1 2 3 4 5 6
+ */
+
+let escolherExercicio = () => {
+    let escolha = 0;
+
+    do {
+        escolha = Number(prompt('Escolha um exericio: \n1 - Exercício 01\n2 - Exercício 2\n3 - Exercício 3\n4 - Exercício 4\n 5 - Sair'))
+        const exercicios = (escolha) => {
+
+            switch(escolha){
+                case 1:
+                        let valor1 = Number(prompt('Informe o *primeiro* valor:'));
+                        let valor2 = Number(prompt('Informe o *segundo* valor:'));
+                        let valor3 = Number(prompt('Informe o *terceiro* valor:'));
+                    const valores = (valor1,valor2,valor3) => {
+                        let somaValores = Math.pow(valor1,2);
+                        somaValores += Math.pow(valor2,2);
+                        somaValores += Math.pow(valor3,2);
+                        return somaValores;
                     }
-                    
-                }
-                console.log(desenho)
-            }
-            desenharRetangulo(3,5)
+                    console.log(valores(valor1,valor2,valor3));
+                    break;
+                case 2:
 
-        case 3:
-        case 4:
-        case 5:
-        default:
-    }
+                    function pegarDados(){
+                        let linhas = Number(prompt('Informe quantas linha terá o retângulo:'));
+                        let colunas = Number(prompt('Informe quantas colunas terá o retângulo:')); 
+
+                        const desenharRetangulo = (linhas,colunas) => {
+                            let desenho = ''
+                            
+                            for (l=0; l<linhas; l++){
+                                if (l === 0 || l === linhas - 1){
+                                    desenho += '+'
+                                    for (c=0; c<colunas - 1; c++){
+                                        if (c === colunas - 2){
+                                            desenho += '+\n'
+                                        } else {
+                                            desenho += '-'
+                                        }
+                                    }
+                                } else {
+                                    desenho += '|'
+
+                                    for (c=0; c<colunas - 1; c++){
+                                        if (c === colunas - 2){
+                                            desenho += '|\n'
+                                        } else {
+                                            desenho += ' '
+                                        }
+                                    }
+                                }
+                            }
+                            return console.log(desenho);
+                        }
+                        desenharRetangulo(linhas,colunas);
+                    }
+                    pegarDados();
+                    break;
+                case 3:
+
+                    function solicitarNumero(){
+
+                        const quantidadeDigitos = (num) => console.log(`Há ${num.length} digitos o número ${num}`);
+
+                        quantidadeDigitos(prompt('Qual número deseja verificar a quanidade de digitos?'));
+
+                        // DEVE ser inteiro?
+                    }
+                    solicitarNumero();
+                    break;
+                case 4:
+                    function numero(){
+
+                        let numero = prompt('Digite um número: ');
+
+                        let lista = [];
+
+                        for (i=1; i<=numero; i++){
+                            lista.push(i);
+                        }
+
+                        let novaLista = [];
+
+                        for (k=0; k<lista.length; k++){
+                            novaLista.push(lista[k]);
+                            console.log(novaLista);
+                        }
+                    }
+                    numero();
+                    // formato de array
+
+                    break;
+
+                case 5:
+                    alert('Sair');
+                    break;
+                default:
+                console.log('Exercício não existente.')
+            }
+        } 
+        exercicios(escolha);
+    } while ( escolha !== 5 )
 }
+escolherExercicio();
