@@ -33,7 +33,7 @@ console.log(numeroPerfeito(num));
 
 const exponenciacao = (x, y) => x**y;
 
-/* 3 */
+/* 3.	Faça um algoritmo que leia 3 notas de um aluno e um quarto número que representa o modelo de média a ser calculada. Caso o modelo seja igual a 1, calcular a média aritmética; caso seja igual a 2, calcular a média ponderada com pesos iguais a 5, 3 e 2; caso seja igual a 3, calcular a média harmônica. Repetir este procedimento até que uma das notas informadas seja menor que 0.*/
 
 let nota1 = Number(prompt('Informe a *primeira* nota:'));
 let nota2 = Number(prompt('Informe a *segunda* nota:'));
@@ -62,7 +62,17 @@ function media(n1,n2,n3){
 media(nota1,nota2,nota3);
 
 
-/* 4 */
+/* 4.	Você está desenvolvendo um jogo em 3 dimensões no estilo do Counter-Strike. Nesse momento do desenvolvimento é necessário criar uma função de colisão. Essa função deverá receber as coordenadas em 3 dimensões de 2 pontos e a função deve retornar se colidiu ou não (VERDADEIRO ou FALSO). Dessa forma, sua função servirá para as seguintes situações, por exemplo:
+•	Um tiro acertando um oponente;
+•	Você está encostando em uma parede;
+•	Você recebendo um tiro;
+•	Você pulando e caindo no chão;
+•	Você recebendo estilhaços de uma granada que explodiu perto;
+•	E todas as demais situações de colisão do jogo.
+Para isso você deve considerar:
+•	que coordenadas tridimensionais são compostas de 3 informações, dessa forma: (x,y,z);
+•	a fórmula abaixo para cálculo da distância, ou seja, se o d for 0 é sinal que está colidindo.
+*/
 
 function colisao(x2, x1, y2, y1, z2, z1){
     let distancia = Math.sqrt(Math.pow((x2-x1),2) + Math.pow((y2-y1),2) + Math.pow(z2-z1,2));
@@ -73,7 +83,6 @@ function colisao(x2, x1, y2, y1, z2, z1){
         return false;
     }
 }
-
 
 /* 5.	Desenvolva apenas UM algoritmo que, dependendo da opção que o usuário escolher, execute um dos exercícios abaixo. O programa só deve terminar quando o usuário escolher para sair. Abaixo o exemplo do menu:
 1 – Exercício 1
@@ -114,34 +123,36 @@ Imprimir:
 1 2 3 4 5 6
  */
 
-let escolherExercicio = () => {
+const escolherExercicio = () => {
     let escolha = 0;
 
     do {
-        escolha = Number(prompt('Escolha um exericio: \n1 - Exercício 01\n2 - Exercício 2\n3 - Exercício 3\n4 - Exercício 4\n 5 - Sair'))
+        escolha = Number(prompt('Escolha um exericio: \n1 - Exercício 01\n2 - Exercício 02\n3 - Exercício 03\n4 - Exercício 04\n 5 - Sair'))
         const exercicios = (escolha) => {
 
             switch(escolha){
                 case 1:
+                    const pegarValores = () => {
                         let valor1 = Number(prompt('Informe o *primeiro* valor:'));
                         let valor2 = Number(prompt('Informe o *segundo* valor:'));
                         let valor3 = Number(prompt('Informe o *terceiro* valor:'));
-                    const valores = (valor1,valor2,valor3) => {
-                        let somaValores = Math.pow(valor1,2);
-                        somaValores += Math.pow(valor2,2);
-                        somaValores += Math.pow(valor3,2);
-                        return somaValores;
+                        const valores = (v1,v2,v3) => {
+                            let somaValores = Math.pow(v1,2);
+                            somaValores += Math.pow(v2,2);
+                            somaValores += Math.pow(v3,2);
+                            return somaValores;
+                        }
+                        console.log(valores(valor1,valor2,valor3));
                     }
-                    console.log(valores(valor1,valor2,valor3));
+                    pegarValores();
                     break;
                 case 2:
-
-                    function pegarDados(){
+                    const pegarDados = () => {
                         let linhas = Number(prompt('Informe quantas linha terá o retângulo:'));
                         let colunas = Number(prompt('Informe quantas colunas terá o retângulo:')); 
 
                         const desenharRetangulo = (linhas,colunas) => {
-                            let desenho = ''
+                            let desenho = '';
                             
                             for (l=0; l<linhas; l++){
                                 if (l === 0 || l === linhas - 1){
@@ -172,19 +183,17 @@ let escolherExercicio = () => {
                     pegarDados();
                     break;
                 case 3:
-
-                    function solicitarNumero(){
+                    const solicitarNumero = () => {
 
                         const quantidadeDigitos = (num) => console.log(`Há ${num.length} digitos o número ${num}`);
-
+                        
                         quantidadeDigitos(prompt('Qual número deseja verificar a quanidade de digitos?'));
-
                         // DEVE ser inteiro?
                     }
                     solicitarNumero();
                     break;
                 case 4:
-                    function numero(){
+                    const numero = () => {
 
                         let numero = prompt('Digite um número: ');
 
@@ -203,14 +212,13 @@ let escolherExercicio = () => {
                     }
                     numero();
                     // formato de array
-
                     break;
 
                 case 5:
                     alert('Sair');
                     break;
                 default:
-                console.log('Exercício não existente.')
+                alert('Exercício não existente.')
             }
         } 
         exercicios(escolha);
