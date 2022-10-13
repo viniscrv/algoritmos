@@ -35,32 +35,38 @@ const exponenciacao = (x, y) => x**y;
 
 /* 3.	Faça um algoritmo que leia 3 notas de um aluno e um quarto número que representa o modelo de média a ser calculada. Caso o modelo seja igual a 1, calcular a média aritmética; caso seja igual a 2, calcular a média ponderada com pesos iguais a 5, 3 e 2; caso seja igual a 3, calcular a média harmônica. Repetir este procedimento até que uma das notas informadas seja menor que 0.*/
 
-let nota1 = Number(prompt('Informe a *primeira* nota:'));
-let nota2 = Number(prompt('Informe a *segunda* nota:'));
-let nota3 = Number(prompt('Informe a *terceira* nota:'));
-let modelo = Number(prompt('Informe o modelo de médias:\n1- Média Aritmética\n2 - Média Ponderada\n3 - Média Harmônica'));
+function media(){
 
-function media(n1,n2,n3){
-    switch(modelo){
-        case 1:
-            return (n1+n2+n3)/3;
-            break;
-        case 2:
-            let peso1 = 5;
-            let peso2 = 3;
-            let peso3 = 2;
-            return (n1*peso1+n2*peso2+n3*peso3)/(peso1 + peso2 + peso3);
-            break;
-        case 3: 
-            return 3/(1/n1+1/n2+1/n3);
-            break;
-        default:
-            return 'Modelo não encontrado';
-    }
+    let modelo;
+    let n1;
+    let n2;
+    let n3;
+
+    do {
+        n1 = Number(prompt('Informe a *primeira* nota:'));
+        n2 = Number(prompt('Informe a *segunda* nota:'));
+        n3 = Number(prompt('Informe a *terceira* nota:'));
+        modelo = Number(prompt('Informe o modelo de médias:\n1- Média Aritmética\n2 - Média Ponderada\n3 - Média Harmônica'));
+
+        switch(modelo){
+            case 1:
+                console.log( (n1+n2+n3)/3);
+                break;
+            case 2:
+                let peso1 = 5;
+                let peso2 = 3;
+                let peso3 = 2;
+                console.log( (n1*peso1+n2*peso2+n3*peso3)/(peso1 + peso2 + peso3) );
+                break;
+            case 3: 
+                console.log( 3/(1/n1+1/n2+1/n3) );
+                break;
+            default:
+                console.log( 'Modelo não encontrado');
+        }
+
+    } while (n1 > 0 && n2 > 0 && n3 > 0);
 }
-
-media(nota1,nota2,nota3);
-
 
 /* 4.	Você está desenvolvendo um jogo em 3 dimensões no estilo do Counter-Strike. Nesse momento do desenvolvimento é necessário criar uma função de colisão. Essa função deverá receber as coordenadas em 3 dimensões de 2 pontos e a função deve retornar se colidiu ou não (VERDADEIRO ou FALSO). Dessa forma, sua função servirá para as seguintes situações, por exemplo:
 •	Um tiro acertando um oponente;
@@ -77,11 +83,7 @@ Para isso você deve considerar:
 function colisao(x2, x1, y2, y1, z2, z1){
     let distancia = Math.sqrt(Math.pow((x2-x1),2) + Math.pow((y2-y1),2) + Math.pow(z2-z1,2));
 
-    if (distancia === 0){
-        return true;
-    } else {
-        return false;
-    }
+    return distancia === 0 ? true : false
 }
 
 /* 5.	Desenvolva apenas UM algoritmo que, dependendo da opção que o usuário escolher, execute um dos exercícios abaixo. O programa só deve terminar quando o usuário escolher para sair. Abaixo o exemplo do menu:
