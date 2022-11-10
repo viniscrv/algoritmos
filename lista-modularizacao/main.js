@@ -190,7 +190,6 @@ const escolherExercicio = () => {
                         const quantidadeDigitos = (num) => console.log(`Há ${num.length} digitos o número ${num}`);
                         
                         quantidadeDigitos(prompt('Qual número deseja verificar a quanidade de digitos?'));
-                        // DEVE ser inteiro?
                     }
                     solicitarNumero();
                     break;
@@ -213,7 +212,6 @@ const escolherExercicio = () => {
                         }
                     }
                     numero();
-                    // formato de array
                     break;
 
                 case 5:
