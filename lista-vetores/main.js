@@ -124,4 +124,82 @@ for (let i=0; i < numeros.length; i++) {
 }
 
 console.log("Número de vezes que o número informado repete no vetor: ", quantidadeRepetida);
+
+/* Crie um algoritmo que leia o vetor com 1000 números e some apenas os elementos positivos 
+que estão nas posições pares
+ */
+
+let numeros = [];
+let num = 0;
+
+ do {
+    num = Number(prompt("Digite um número para adicionar a lista: "));
+    numeros.push(num)
+ } while (numeros.length < 5);
+
+let soma = 0;
+
+for (let i=0; i < numeros.length; i++) {
+    if (i % 2 === 0) {
+        if (numeros[i] >= 0) {
+            soma += numeros[i];
+        }
+    }
+}
+
+/* Faça um algoritmo que leia um vetor A de 30 números. Armazene em um vetor B o maior elemento de A, 
+o menor elemento de A, a soma dos elementos de A e média dos elementos de A. Apresente o vetor B na tela. */
+
+
+let vetorA = [];
+let vetorB = [];
+let num;
+
+do {
+    num = Number(prompt("Digite um número para adicionar ao vetor A: "));
+    vetorA.push(num);
+} while (vetorA.length < 6);
+
+let maiorValor = vetorA[0];
+let menorValor = vetorA[0];
+let soma = 0;
+
+for (let i=0; i < vetorA.length; i++) {
+
+    vetorA[i] > maiorValor ? maiorValor = vetorA[i] : null;
+
+    vetorA[i] < menorValor ? menorValor = vetorA[i] : null;
+
+    soma += vetorA[i];
+}
+
+let media = soma/vetorA.length;
+
+vetorB.push(maiorValor);
+vetorB.push(menorValor);
+vetorB.push(soma);
+vetorB.push(media);
+
+console.log(vetorB);
+
+/* Crie um algoritmo que leia um vetor A de 10 posições diferentes do teclado e, ao final da leitura,
+copie os elementos de A em B de forma invertida. Ou seja, o primeiro elemento de A é o último de B,
+o segundo elemento de A é o penúltimo elemento de B, e assim por diante. 
+ */
+
+let vetorA = [];
+let vetorB = [];
+let num;
+
+do {
+    num = Number(prompt("Digite um número para ser adicionado ao vetor A: "));
+    vetorA.push(num);
+
+} while (vetorA.length < 10);
+
+for (let i=vetorA.length - 1; i >= 0; i--) {
+    vetorB.push(vetorA[i]);
+}
+
+console.log(vetorB);
  
