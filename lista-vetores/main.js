@@ -150,7 +150,6 @@ for (let i=0; i < numeros.length; i++) {
 /* Faça um algoritmo que leia um vetor A de 30 números. Armazene em um vetor B o maior elemento de A, 
 o menor elemento de A, a soma dos elementos de A e média dos elementos de A. Apresente o vetor B na tela. */
 
-
 let vetorA = [];
 let vetorB = [];
 let num;
@@ -203,3 +202,131 @@ for (let i=vetorA.length - 1; i >= 0; i--) {
 
 console.log(vetorB);
  
+
+/* Elabore um algoritmo que calcule o produto escalar entre dois vetores de inteiros de tamanho igual
+a 5. Esses números devem ser digitados pelo teclado.
+
+Exemplo: {0,2,4,6,8} . {1,3,5,7,9} = 0*1 + 2*3 + 4*5 + 6*7 + 8*9 = 140;
+
+ */
+
+let vetorA = [];
+let vetorB = [];
+let num = 0;
+
+ do {
+
+    num = Number(prompt(`Digite o [${vetorA.length + 1}] número para adicionar ao vetor A :`));
+    vetorA.push(num);
+        
+ } while (vetorA.length < 5);
+
+
+ do {
+
+    num = Number(prompt(`Digite o [${vetorB.length + 1}] número para adicionar ao vetor B :`));
+    vetorB.push(num);
+        
+ } while (vetorB.length < 5);
+
+let resultados = [];
+
+for (let i=0; i < 5; i++) {
+    resultado = vetorA[i] * vetorB[i];
+    resultados.push(resultado);
+}
+
+let soma = 0;
+
+for (let j=0; j < resultados.length; j++) {
+    soma += resultados[j];
+}
+
+console.log(`Produto escalar é igual a : ${soma}`);
+
+
+/* Elabore um algoritmo que leia 30 números do teclado e preencha um vetor de acordo com a seguinte regra: 
+com exceção do 1 número, só é permitido armazenar um número se ele for maior que o anterior.
+Ex.: se o primeiro valor for 5, o próximo valor lido só poderá ser maior que 5. E assim por diante;   
+ */
+
+ let numeros = [];
+ let maiorValor = 0;
+ let num;
+
+ do {
+    num = Number(prompt("Digite um número para adicionar a lista :"));
+    if (numeros.length === 0) {
+        maiorValor = num;
+        numeros.push(num);
+    } else {
+        if (num > maiorValor) {
+            maiorValor = num;
+            numeros.push(num);
+        } else {
+            alert("Você deve digitar um número que seja maior que o anterior!");
+        }
+    }
+
+ } while (numeros.length < 30); 
+
+ /* Em uma competição de salto em distância cada atleta tem direito a cinco saltos. O salto 
+mais baixo e mais alto do atleta deve ser desconsiderado, o resultado do atleta será determinado 
+pela média de apenas três vetores restantes. Você deve fazer um programa que receba o nome e as cinco 
+distâncias alcançadas pelo atleta em seus saltos e depoius informe o nome, os saltos e a média dos 
+saltos. O programa deve ser encerrado quando não houverem mais atletas. Exemplo de como deve ser a saida 
+para cada atleta lido:
+
+Atleta Diogo Deconto
+
+Primeiro salto: 6.5m - DESCONSIDERADO
+Segundo salto: 6.1m 
+Terceiro salto: 6.2m  
+Quarto salto: 5.4m 
+Primeiro salto: 5.3m - DESCONSIDERADO
+
+Resultado final:
+Atleta: Diogo Deconto 
+Saltos considerados: 6.1 - 6.2 - 5.4
+Média dos saltos: 5.9 m
+
+  */
+
+let saltos = [];
+let salto;
+let nomeAtleta = "";
+
+
+nomeAtleta = prompt("Digite o nome do atleta: ");
+
+do {
+    salto = Number(prompt(`Digite a distância do [${saltos.length + 1}/5] salto :`));
+    saltos.push(salto);
+
+} while (saltos.length < 5);
+
+let soma = 0;
+
+for (let i=0; i < saltos.length; i++) {
+    if (i !== 0 && i !== saltos.length) {
+        soma += saltos[i];
+    }
+}
+
+let mediaSaltos = (soma/saltos.length - 2);
+
+console.log(
+    `
+    Atleta ${nomeAtleta}\n 
+    Primeiro salto: ${saltos[0]} m - DESCONSIDERADO\n
+    Segundo salto: ${saltos[1]} m\n
+    Terceiro salto: ${saltos[2]} m\n
+    Quarto salto: ${saltos[3]} m\n
+    Quinto salto: ${saltos[saltos.length - 1]} m - DESCONSIDERADO\n
+
+    Resultado Final:\n
+    Atleta: ${nomeAtleta}\n 
+    Saltos considerados: ${saltos[1]} m - ${saltos[2]} m - ${saltos[3]} m\n
+    Média dos saltos: ${mediaSaltos.toFixed(2)} m
+    `
+    )
