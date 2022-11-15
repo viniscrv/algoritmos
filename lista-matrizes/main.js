@@ -88,24 +88,77 @@ let matrizB = [];
 
 let valor;
 
-for (let i=0; i < 3; i++) {
+for (let i=0; i < 5; i++) {
 
     matrizA.push([]);
-    for (let j=0; j < 3; j++) {
+    for (let j=0; j < 5; j++) {
 
         valor = Number(prompt("Digite um valor para adicionar a matriz (5x5) :"));
         matrizA[i].push(valor);
     }
 }
 
-for (let i=0; i < 3; i++) {
+for (let i=0; i < 5; i++) {
 
     matrizB.push([]);
-    for (let j=0; j < 3; j++) {
-
-        if 
-        matrizB[i].push(matrizA[i][j]);
+    for (let j=0; j < 5; j++) {
+        matrizB[i] !== matrizB[j] ? matrizB[i].push(matrizA[i][j]*2) : matrizB[i].push(matrizA[i][j]*3);
     }
 }
 
 console.log(matrizB);
+
+/* Crie um algoritmo que leia uma matriz A (5 x 2) e, em uma matriz B do mesmo tamanho,
+armazene a soma dos elementos de A na primeira coluna e a multiplicação dos elementos de A
+na segunda coluna */
+
+let matrizA = [];
+let matrizB = [];
+let valor;
+
+for (let i=0; i < 5; i++){
+    matrizA.push([]);
+    for (let j=0; j < 2; j++) {
+        valor = Number(prompt("Digite um valor para adicionar a matriz A (5x2) :"));
+        matrizA[i].push(valor);
+    }
+}
+
+for (let i=0; i < 5; i++){
+    matrizB.push([]);
+
+    for (let j=0; j < 2; j++){
+        j === 0 ? matrizB[i].push(matrizA[i][0] + matrizA[i][1]) : matrizB[i].push(matrizA[i][0] * matrizA[i][1])
+    }
+} 
+
+console.log(matrizB);
+
+/* Construa um algoritmo que leia do teclado uma matriz quadrada(12 x 12) e verifique se ela é 
+uma matriz identidade. Uma matriz quadrada possui o mesmo número de linhas e colunas.
+Uma matriz identidade possui 1 nos elementos da diagonal principal e 0 nos demais. Exemplo:
+matriz identidade de dimensão 3x3. */
+
+
+let matriz = [];
+let valor;
+let diagonal = 0;
+let restante = 0;
+
+for (let i=0; i < 12; i++) {
+    matriz.push([]);
+
+    for (let j=0; j < 12; j++) {
+        valor = Number(prompt("Digite um valor para adicionar a matriz (12x12) :"));
+        matriz[i].push(valor);
+
+        matriz[i] === matriz[j] && matriz[i][j] === 1 ? diagonal++ : null;
+
+        matriz[i][j] === 0 ? restante++ : null;
+    }
+}
+
+console.log(matriz);
+
+diagonal === matriz.length && restante === 144 - diagonal ? 
+console.log("Matriz é uma matriz identidade") : console.log("Matriz *não* é uma matriz identidade");
