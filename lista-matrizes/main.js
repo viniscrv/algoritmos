@@ -162,3 +162,108 @@ console.log(matriz);
 
 diagonal === matriz.length && restante === 144 - diagonal ? 
 console.log("Matriz é uma matriz identidade") : console.log("Matriz *não* é uma matriz identidade");
+
+/* Construa um algoritmo que leia uma matriz de dimensão 7x4 e, em um vetor de 7 elementos,
+armazene o menor elemento de cada linha da matriz. Exemplo: */
+
+
+let matriz = [];
+let vetor = [];
+let menorValor;
+let valor;
+
+for (let i=0; i < 7; i++) {
+    matriz.push([]);
+
+    for (let j=0; j < 4; j++){
+        valor = Number(prompt("Digite um valor para adicionar a matriz (7x4) :"));
+        matriz[i].push(valor);
+    }
+}
+
+console.log(matriz);
+
+for (let i=0; i < 7; i++) {
+    for (let j=0; j < 4; j++) {
+
+        j === 0 ? menorValor = matriz[i][0] : null;
+
+        matriz[i][j] < menorValor ? menorValor = matriz[i][j] : null;
+    }
+    vetor.push(menorValor);
+} 
+
+console.log(vetor);
+
+
+/* Elabore um algoritmo que leia dois vetores A e B de 15 números do teclado.
+Após a leitura, crie uma matriz de 15 linhas e 2 colunas onde  aprimeira coluna 
+armaza os elementos de A e a segunda coluna armazena os elementos de B. Apresente 
+a matriz na tela. Exemplo: */
+
+let vetorA = [];
+let vetorB = [];
+let matriz = [];
+let valor;
+
+do {
+
+    valor = Number(prompt("Digite um valor para adicionar ao vetor A :"));
+    vetorA.push(valor);
+
+} while (vetorA.length < 15)
+
+do {
+
+    valor = Number(prompt("Digite um valor para adicionar ao vetor B :"));
+    vetorB.push(valor);
+
+} while (vetorB.length < 15)
+
+for (let i=0; i < 15; i++) {
+
+    matriz.push([]);
+    for (let j=0; j < 2; j++){
+
+        j === 0 ? matriz[i].push(vetorA[i]) : matriz[i].push(vetorB[i])
+    }
+}
+
+console.log(matriz);
+
+/* Elabore um agoritmo que leia do teclado uma matriz triangular superior de dimensão
+20x20. Uma matriz triangular superior é quadrada e possui 0 nos elementos abaixo da diagonal principal
+e acima dela. Exemplo: matriz trangular superior de tamanho 4. */
+
+let matriz = [];
+let valor;
+
+for (let i=0; i < 20; i++) {
+    matriz.push([]);
+    for (let j=0; j < 20; j++) {
+
+        if (j < i){
+            matriz[i].push(0);
+        } else {
+            valor = Number(prompt("Digite um valor para adicionar a matriz :"));
+            matriz[i].push(valor);
+        }
+    } 
+}
+
+console.log(matriz);
+
+
+/* Elabore um algoritmo que leia uma matriz A dimensão 3x4 e crie uma matriz B que 
+representa a transposta de A. Apresente na tela a matriz B. Exemplo : */
+
+let matriz = [];
+let valor;
+
+for (let i=0; i < 3; i++){
+    matriz.push([])
+    for (let j=0; j < 4; j++) {
+        valor = Number(prompt("Digite um valor para adicionar a matriz :"));
+        matriz[i].push(valor);
+    }
+}
