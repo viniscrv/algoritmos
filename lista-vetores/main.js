@@ -1,4 +1,4 @@
-/* 2. Faça um algoritmo que leia um vetor de 5 números inteiros e mostre-os.  */
+/*Faça um algoritmo que leia um vetor de 5 números inteiros e mostre-os.  */
 
 let numeros = [];
 let num = 0;
@@ -12,7 +12,7 @@ for (let i= 0; i<numeros.length; i++) {
     console.log(numeros[i]);
 }
 
-/* Faça um algoritmo que leia um vetor de 10 números reais e mostre-os em ordem inversa */
+/* um algoritmo que leia um vetor de 10 números reais e mostre-os em ordem inversa */
 
 let numeros = [];
 let num = 0;
@@ -75,10 +75,30 @@ do {
 console.log("Número total de números informados: ", todosNumeros);
 console.log("Total de números pares informados: ", pares);
 console.log("Total de números ímpares informados: ", impares);
-/* Construa um algoritmo que leia um vetor de 15 posições e calcule a média destes vetores
-. Na sequência, apresente na tela os vetores que são iguais ou superiores á média
+/* Construa um algoritmo que leia um vetor de 15 posições e calcule a média destes valores.
+Na sequência, apresente na tela os valores que são iguais ou superiores á média */
 
-*/
+
+let vetor = [];
+let valor;
+let soma = 0;
+
+do {
+    valor = Number(prompt("Digite um valor para adicionar ao vetor :"));
+    soma += valor;
+    vetor.push(valor);
+
+} while (vetor.length < 10); //15
+
+let media = (soma/vetor.length);
+let maiorMedia = [];
+
+for (let i=0; i < vetor.length; i++) {
+    vetor[i] > media ? maiorMedia.push(vetor[i]) : null;
+}
+
+console.log(`Valores do vetor maiores que a média : [${maiorMedia}]`);
+
 
 
 /* Faça um algoritmo que leia 20 números do teclado e os armazene em um vetor. Crie um segundo 
@@ -112,7 +132,7 @@ do {
    num = Number(prompt(`Adicione o [${numeros.length + 1 }]° número ao vetor: `));
    numeros.push(num);
 
-} while (numeros.length < 5)
+} while (numeros.length < 50)
 
 let n = Number(prompt("Digite o número a ser análisado:"))
 let quantidadeRepetida = 0;
@@ -135,7 +155,7 @@ let num = 0;
  do {
     num = Number(prompt("Digite um número para adicionar a lista: "));
     numeros.push(num)
- } while (numeros.length < 5);
+ } while (numeros.length < 1000);
 
 let soma = 0;
 
@@ -157,7 +177,7 @@ let num;
 do {
     num = Number(prompt("Digite um número para adicionar ao vetor A: "));
     vetorA.push(num);
-} while (vetorA.length < 6);
+} while (vetorA.length < 30);
 
 let maiorValor = vetorA[0];
 let menorValor = vetorA[0];
@@ -329,4 +349,4 @@ console.log(
     Saltos considerados: ${saltos[1]} m - ${saltos[2]} m - ${saltos[3]} m\n
     Média dos saltos: ${mediaSaltos.toFixed(2)} m
     `
-    )
+    );
