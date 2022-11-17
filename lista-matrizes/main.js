@@ -257,13 +257,140 @@ console.log(matriz);
 /* Elabore um algoritmo que leia uma matriz A dimensão 3x4 e crie uma matriz B que 
 representa a transposta de A. Apresente na tela a matriz B. Exemplo : */
 
-let matriz = [];
+let matrizA = [];
 let valor;
 
 for (let i=0; i < 3; i++){
-    matriz.push([])
+    matrizA.push([])
     for (let j=0; j < 4; j++) {
         valor = Number(prompt("Digite um valor para adicionar a matriz :"));
-        matriz[i].push(valor);
+        matrizA[i].push(valor);
     }
 }
+
+let matrizB = [];
+
+for (let i=0; i < 4; i++){
+    matrizB.push([]);
+    for (let j=0; j < 3; j++) {
+        matrizB[i].push(matrizA[j][i]);
+    }
+}
+
+console.log(matrizB);
+
+/* Contrua um algoritmo que leia duas matrizes do teclado de dimensão 5 x 3 e realize 
+a troca dos elementos destas matrizes */
+
+let matrizA = [];
+let matrizB = [];
+let valor;
+
+for (let i=0; i < 5; i++){
+    matrizA.push([]);
+    for(let j=0; j < 3; j++){
+
+        valor = Number(prompt("Digite um valor para adicionar a matriz A (5 x 3): "));
+        matrizA[i].push(valor);
+    }
+}
+
+let matrizAuxiliar = matrizA;
+
+for (let i=0; i < 5; i++){
+    matrizB.push([]);
+    for(let j=0; j < 3; j++){
+
+        valor = Number(prompt("Digite um valor para adicionar a matriz B (5 x 3): "));
+        matrizB[i].push(valor);
+    }
+}
+
+matrizA = matrizB;
+matrizB = matrizAuxiliar;
+
+console.log(matrizA);
+console.log(matrizB);
+
+
+/* O tempo que um determinado avião leva para percorrer o trecho entre duas localidades distintas está 
+disponivel através da seguinte tabela:
+
+a) Contrua um algoritmo que leia a tabela acima e informe ao usuário o tempo necessário para percorrer duas cidades 
+por ele fornecidas, até o momento em que ele fornecer duas cidades iguais(fonte e destino). Não deve ser lido informações
+para a diagonal principal. 
+
+b) Elabore um algoritmo que imprima a tabela sem repetições(apenas o triângulo superior ou o triângulo inferior).
+*/
+
+// QUESTÃO A
+
+let cidades =  [
+    ["-", 02, 11, 06, 15, 11, 01],
+    [02, "-", 07, 12, 04, 02, 15],
+    [11, 07, "-", 11, 08, 03, 13],
+    [06, 12, 11, "-", 10, 02, 01],
+    [15, 04, 08, 10, "-", 05, 13],
+    [11, 02, 03, 12, 05, "-", 14],
+    [01, 15, 13, 01, 13, 14, "-"],
+]
+
+const pegarCidade = () => {
+
+    let x;
+    let y;
+
+    do {
+        x = Number(prompt("Digite a coordenada x da cidade : "));
+        y = Number(prompt("Digite a coordenada y da cidade : "));
+
+        x === y ? alert("As coordenadas não devem ser iguais!") : null;
+
+    } while (x === y);
+
+    return cidades[x][y];
+} 
+
+const calcularTempo = () => {
+
+    let origem;
+    let destino;
+
+    do {
+        alert("Preencha com os dados da cidade de origem:");
+        origem = pegarCidade();
+
+        alert("Preencha com os dados da cidade de destino:");
+        destino = pegarCidade();
+
+        origem === destino ? alert("Origem e destino devem ser diferentes!") : null;
+
+    } while (origem === destino);
+
+    return origem + destino;
+}
+
+console.log(`Tempo necessário para percorrer as cidades fornecidas: ${calcularTempo()} minutos`);
+
+// QUESTÃO B
+
+let cidades =  [
+    ["-", 02, 11, 06, 15, 11, 01],
+    [02, "-", 07, 12, 04, 02, 15],
+    [11, 07, "-", 11, 08, 03, 13],
+    [06, 12, 11, "-", 10, 02, 01],
+    [15, 04, 08, 10, "-", 05, 13],
+    [11, 02, 03, 12, 05, "-", 14],
+    [01, 15, 13, 01, 13, 14, "-"],
+]
+
+let matriz = []
+
+for (let i=0; i < 7; i++) {
+    matriz.push([]);
+    for (let j=0; j < 7; j++) {
+        j < i ? matriz[i].push(cidades[i][j]) : matriz[i].push("-")
+    }
+}
+
+console.log(matriz);
