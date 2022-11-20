@@ -171,3 +171,184 @@ for (let i=0; i<cadastros.length; i++) {
 }
 
 console.log(`Média de idade entre os cadastros: ${soma/cadastros.length}`);
+
+const verificar = () => {
+
+    const ano = Number(prompt("Digite um ano para verificar com os dados registrados:"));
+
+    const anoFiltrado = cadastros.filter((cadastro) => cadastro.anoNascimento >= ano );
+
+    return anoFiltrado.length >= 1 ? anoFiltrado : `Não foram encontrados registros com ano de nascimento maior ou igual à ${ano}` 
+}
+
+verificar();
+
+
+/* Elabore um programa que permita o armazenamento dos seguintes produtos de um supermercado:
+
+    Eletrodomésticos:
+
+    nome
+    modelo 
+    tempo de garantia(em anos)
+
+    Perecíveis
+
+    nome
+    nome do produtor
+    validade(em dias)
+
+Podem ser armazenados até 5 eletrodomésticos e 5 perecíveis. Solicite ao usúario a quantidade de 
+eletrodomésticos a serem cadastrados e faça o seu cadastro. Faça o mesmo com os perecíveis. 
+Ao final, liste todos os produtos cadastrados.
+*/
+
+class Eletrodomestico {
+    constructor (tipo, nome, modelo, garantia) {
+        this.tipo = "eletrodoméstico",
+        this.nome = nome,
+        this.modelo = modelo,
+        this.garantia = garantia
+    }
+}
+
+class Perecivel {
+    constructor (nome, produtor, validade) {
+        this.tipo = "perecível"
+        this.nome = nome,
+        this.produtor = produtor,
+        this.validade = validade
+    }
+}
+
+let produtos = [];
+let eletrodomesticos = [];
+let pereciveis = [];
+let produto;
+let opcao;
+let tipo;
+
+do {
+
+    opcao = Number(prompt("Escolha uma ação. \n1 - Cadastrar novo produto\n2 - Listar produtos(encerrar)."));
+
+    switch(opcao) {
+        case 1: 
+            tipo = Number(prompt("1 - Cadastrar eletrodoméstico\n2 - Cadastrar perecível"));
+
+            switch(tipo) {
+                case 1:
+                    if (eletrodomesticos.length < 5){
+
+                        produto = new Eletrodomestico();
+                        produto.nome = prompt("Digite o nome do produto:");
+                        produto.modelo = prompt("Digite o modelo do produto:");
+                        produto.garantia = prompt("Digite a garantia do produto:");
+
+                        produtos.push(produto);
+                        eletrodomesticos = produtos.filter((produto) => produto.tipo === "eletrodoméstico");
+
+                        alert("Produto cadastrado com sucesso");
+
+                    } else {
+                        alert("Já foi ultrapassado o limite de cadastros");
+                    }
+                break;
+
+                case 2: 
+                    if (pereciveis.length < 5){
+
+                        produto = new Perecivel();
+
+                        produto.nome = prompt("Digite o nome do produto:");
+                        produto.produtor = prompt("Digite o produtor do produto:");
+                        produto.validade = prompt("Digite a validade do produto:");
+
+                        produtos.push(produto);
+                        pereciveis = produtos.filter((produto) => produto.tipo === "perecível");
+
+                        alert("Produto cadastrado com sucesso");
+
+                    } else {
+                        alert("Já foi ultrapassado o limite de cadastros");
+                    }
+                break;
+
+                default:
+                alert("Opção inválida"); break;
+            }
+            
+        break;
+        case 2: alert("sair"); break;
+        default: alert("Opção inválida"); break;
+    }
+
+} while ( opcao !== 2);
+
+console.table(produtos);
+
+
+/* Contrua um programa que permita o cadastro do nome, telefone e email de 5 pessoas. Após a leitura
+dos dados:
+1. Consulte os dados de uma pessoa(com base em um nome fornecido pelo usuário)
+2. Exclua uma pessoa (com base em um nome fornecido pelo usuário)
+3. Liste todas as pessoas cadastradas
+
+*/
+
+class Pessoa {
+    constructor (nome, telefone, email) {
+        this.nome = nome,
+        this.telefone = telefone,
+        this.email = email
+    }
+}
+
+let pessoas = [];
+let pessoa;
+
+for (let i=0; i < 2; i++) {
+    pessoa = new Pessoa();
+
+    pessoa.nome = prompt(`Digite o nome da pessoa [${i+1}] a ser cadastrada:`);
+    pessoa.telefone = Number(prompt(`Digite o telefone da pessoa [${i+1}] a ser cadastrada:`));
+    pessoa.email = prompt(`Digite o email da pessoa [${i+1}] a ser cadastrada:`);
+
+    pessoas.push(pessoa);
+}
+
+let opcao;
+let nome;
+
+do {
+
+    opcao = Number(prompt("Escolha uma opção:\n1 - Consultar dados de uma pessoa.\n2 - Excluir uma pessoa.\n3 - Listar todos os cadastros\n4 - Sair"));
+
+    switch(opcao) {
+        case 1: 
+            nome = prompt("Digite o nome da pessoa que deseja analisar:");
+
+            const nomesEncontrados = pessoas.filter((pessoa) => pessoa.nome === nome);
+
+            nomesEncontrados.length >= 1 ? console.table(nomesEncontrados) : alert("Registro não encontrado");
+
+        break;
+
+        case 2:
+            alert("ok");
+        break;
+
+        case 3:
+            alert("ok");
+        break;
+
+        case 4:
+            alert("Você saiu.")
+        break;
+
+        default:
+            alert("Opção inválida");
+        break;
+    }
+
+} while ( opcao !== 4);
