@@ -306,8 +306,10 @@ class Pessoa {
 
 let pessoas = [];
 let pessoa;
+let consultaFiltrada;
+let remocaoFiltrada;
 
-for (let i=0; i < 2; i++) {
+for (let i=0; i < 5; i++) {
     pessoa = new Pessoa();
 
     pessoa.nome = prompt(`Digite o nome da pessoa [${i+1}] a ser cadastrada:`);
@@ -322,24 +324,33 @@ let nome;
 
 do {
 
-    opcao = Number(prompt("Escolha uma opção:\n1 - Consultar dados de uma pessoa.\n2 - Excluir uma pessoa.\n3 - Listar todos os cadastros\n4 - Sair"));
+    opcao = Number(prompt("Escolha uma opção:\n1 - Consultar dados de uma pessoa\n2 - Remover uma pessoa\n3 - Listar todos os cadastros\n4 - Sair"));
 
     switch(opcao) {
         case 1: 
             nome = prompt("Digite o nome da pessoa que deseja analisar:");
 
-            const nomesEncontrados = pessoas.filter((pessoa) => pessoa.nome === nome);
+            consultaFiltrada = pessoas.filter((pessoa) => pessoa.nome === nome);
 
-            nomesEncontrados.length >= 1 ? console.table(nomesEncontrados) : alert("Registro não encontrado");
+            consultaFiltrada.length >= 1 ? console.table(consultaFiltrada) : alert("Registro não encontrado");
 
         break;
 
         case 2:
-            alert("ok");
+            nome = prompt("Digite o nome da pessoa que deseja remover:");
+
+            remocaoFiltrada = pessoas.filter((pessoa) => pessoa.nome !== nome);
+
+            remocaoFiltrada.length >= 1 ? pessoas = remocaoFiltrada : alert("Registro não encontrado");
+
+            alert("Registro removido com sucesso!");
+
         break;
 
         case 3:
-            alert("ok");
+            alert("Cadastros listados!");
+
+            console.table(pessoas);
         break;
 
         case 4:
